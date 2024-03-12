@@ -5,7 +5,9 @@ const port = process.env.PORT || 3001;
 app.get("/", (req, res) => res.type('html').send(html));
 
 app.get("/delay/:secs", (req, res) => {
-  res.json(req.params);
+  response = { secs: req.params.secs };
+  response.isNumber = !isNaN(response.secs);
+  res.json(response);
 });
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
