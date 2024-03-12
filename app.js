@@ -6,7 +6,7 @@ app.get("/", (req, res) => res.type('html').send(html));
 
 app.get("/delay/:secs", (req, res) => {
   res.json(req.params);
-}
+});
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
