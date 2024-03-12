@@ -9,8 +9,12 @@ app.get("/delay/:secs", (req, res) => {
   response.isNumber = !isNaN(response.secs);
   if (response.isNumber) {
     response.delayMS = Number(response.secs) * 1000;
+    setTimeout(() => {
+      res.json(response);
+    }, response.delayMS);
+  } else {
+    res.json(response);
   }
-  res.json(response);
 });
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
