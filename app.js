@@ -7,6 +7,9 @@ app.get("/", (req, res) => res.type('html').send(html));
 app.get("/delay/:secs", (req, res) => {
   response = { secs: req.params.secs };
   response.isNumber = !isNaN(response.secs);
+  if (response.isNumber) {
+    response.delayMS = Number(response.secs) * 1000;
+  }
   res.json(response);
 });
 
