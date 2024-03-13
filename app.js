@@ -2,9 +2,11 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3001;
+const corsOrigin =
+  process.env.CORS_ORIGIN || "https://excel-deploy-test.onrender.com";
 
 const corsOptions = {
-  origin: ["https://localhost:3000", "https://excel-deploy-test.onrender.com"],
+  origin: [corsOrigin],
 };
 
 app.use(cors(corsOptions));
